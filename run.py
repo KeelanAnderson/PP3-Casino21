@@ -1,5 +1,12 @@
 import random
 import time
+import itertools
+
+values= ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King']
+suits = ['Diamonds', 'Hearts', 'Clubs', 'Spades']
+
+deck = list(itertools.product(values, suits))
+random.shuffle(deck)
 
 starting_pot = 1000
 
@@ -23,7 +30,7 @@ def place_bet():
             remaining_pot = starting_pot - bet 
             print('Bet placed!')
             print(f"Pot: ${remaining_pot}")
-            start_round()
+            start_round(deck)
             break
 
 
@@ -41,17 +48,19 @@ def accept_bet(bet_amount, pot):
 
     return True
 
-def start_round():
+def start_round(deck):
     print('Dealer Shuffling Deck...')
+    random.shuffle(deck)
     time.sleep(3)
     deal_card()
-    deal_card()
+    
     
 
-
-def deal_card(card):
+def deal_card():
     """ deals a single card from shuffled deck"""
-    print(card)
+    print('Player')
+    for i in range(2):
+        print(deck[i][0], 'of', deck[i][1])
 
 
 place_bet()
