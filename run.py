@@ -1,13 +1,13 @@
 import random
 
-player_pot = 1000
+starting_pot = 1000
 
 def game_intro():
     """ Gives introduction to the game. Shows players starting pot.
     prompts user to enter their name. """
 
     print('Welcome To BlackJack!!!')
-    print(f"Your Starting Pot is ${player_pot}")
+    print(f"Your Starting Pot is ${starting_pot}")
     input('Please Enter Your Name: ')
 
 game_intro()
@@ -16,23 +16,28 @@ game_intro()
 def place_bet():
     """ Prompts user to input their bet amounts """
     print('Minimum bets are $50')
+    while True:
+        bet = int(input('Place your Bet: $'))
+        if accept_bet(bet, starting_pot):
+            remaining_pot = starting_pot - bet 
+            print('Bet placed!')
+            print(f"Pot: ${remaining_pot}")
+            break
 
-    bet = int(input('Place your Bet: $'))
 
-    accept_bet(bet)
-
-
-
-def accept_bet(player_bet):
+def accept_bet(bet_amount, pot):
     """ verifies if the bet amount is valid """
     try:
-        if player_bet > player_pot or player_bet < 50:
+        if bet_amount > pot or bet_amount < 50:
             raise ValueError(
-                f"You tried to bet ${player_bet}\nYour Pot is ${player_pot}\nMinimum bets are $50"
+                f"\nYou tried to bet ${bet_amount}\nYour Pot is ${pot}\nMinimum bets are $50\n"
             )
-    except ValueError as e:
-        print(e)
+    except ValueError as error:
+        print(error)
         print('Please try again...')
+        return False
+
+    return True
 
 
 place_bet()
