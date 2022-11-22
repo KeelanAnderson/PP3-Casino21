@@ -1,4 +1,5 @@
 import random
+import time
 
 starting_pot = 1000
 
@@ -22,6 +23,7 @@ def place_bet():
             remaining_pot = starting_pot - bet 
             print('Bet placed!')
             print(f"Pot: ${remaining_pot}")
+            start_round()
             break
 
 
@@ -38,6 +40,18 @@ def accept_bet(bet_amount, pot):
         return False
 
     return True
+
+def start_round():
+    print('Dealer Shuffling Deck...')
+    time.sleep(3)
+    deal_card()
+    deal_card()
+    
+
+
+def deal_card(card):
+    """ deals a single card from shuffled deck"""
+    print(card)
 
 
 place_bet()
