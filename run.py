@@ -32,8 +32,20 @@ class Deck:
             for rank in ranks:
                 self.deck.append(Card(suit, rank))
 
-    def __str__(self)
+    def __str__(self):
+        
+        complete_deck = ''
+        for card in self.deck:
+            complete_deck += '\n ' + complete_deck
+        return complete_deck
 
+    def shuffle(self):
+        random.shuffle(self.deck)
+
+
+    def deal_card(self):
+        single_card = self.deck.pop()
+        print(single_card)
 
 def game_intro():
     """ Gives introduction to the game. Shows players starting pot.
@@ -77,13 +89,13 @@ def start_round(deck):
     print('Dealer Shuffling Deck...\n')
     random.shuffle(deck)
     time.sleep(3)
-    deal_first_hand()
 
 
 
 
 
 place_bet()
+
 # player_score = []
 # dealer_score = []
 
@@ -128,14 +140,3 @@ place_bet()
 #     """ calculate player score """
 #     Sum = sum(value)
 #     print(Sum)
-
-
-
-
-
-# class Dealer:
-#     def init(self, hand, score):
-#         self.hand = hand
-#         self.score = score
-
-#     def take_cards(self):
