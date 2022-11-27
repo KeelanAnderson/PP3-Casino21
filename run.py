@@ -16,15 +16,15 @@ class Card:
     """ creates instance of cards in deck """                                                                               
 
     def __init__(self, rank, suit):
-        self.rank
-        self.suit
+        self.rank = rank
+        self.suit = suit
 
     def __str__(self):
         return self.rank + ' of ' + self.suit
 
 
 class Deck:
-
+    """ creates instances of a deck of playing cards """
 
     def __init__(deck):
         self.deck = []
@@ -46,6 +46,30 @@ class Deck:
     def deal_card(self):
         single_card = self.deck.pop()
         print(single_card)
+
+
+class Hand:
+    """ shows the hands the the dealer and player have """
+
+    def __init__(self):
+        self.cards = []
+        self.value = 0 
+        self.aces = 0 # counts the aces in the hand so there can be adjusted if hand > 21
+
+    def add_card(self, card):
+        """ add a card to player or dealers hand """
+        self.cards.append(card)
+        self.values += values[card.rank]
+        if (card.rank == 'Ace'):
+            self.aces += 1
+
+    def adjust_aces(self):
+        """ changes the value of an ace in the hand if the score exceeds 21 """
+        while self.values > 21 and self.aces:
+            self.values -= 10
+            self.aces -= 1
+
+
 
 def game_intro():
     """ Gives introduction to the game. Shows players starting pot.
@@ -90,13 +114,9 @@ def start_round(deck):
     random.shuffle(deck)
     time.sleep(3)
 
-
-
-
-
 place_bet()
 
-# player_score = []
+# player_score  = []
 # dealer_score = []
 
 
