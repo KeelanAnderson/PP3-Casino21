@@ -73,7 +73,7 @@ class Hand:
     def add_card(self, card):
         """ add a card to player or dealers hand """
         self.cards.append(card)
-        self.value += values[card.rank]
+        self.value += values[card.ranks]
         if (card.rank == 'Ace'):
             self.aces += 1
 
@@ -88,6 +88,8 @@ class Hand:
 
 deck = Deck()
 player_pot = Pot()
+player_hand = Hand()
+dealer_hand = Hand()
 
 
 def place_bet(pot):
@@ -119,17 +121,28 @@ def accept_bet(bet, pot):
 
 def start_round(deck):
     print('Dealer Shuffling Deck...\n')
-    random.shuffle(deck)
+    deck.shuffle()
     time.sleep(3)
 
+def deal_first_hands(dealer, player):
+    """ shows the first 2 cards dealt to each player """
+
+    print('\nDealer Hand:')
+    print('  <Card Hidden>')
+    print()
+
+    print('\nPlayer Hand:')
+    print()
+    print()
 
 # gameplay
 
-while True:
-    print('Welcome To BlackJack!!!')
-    print("Your Starting Pot is $1000")
-    input('Please Enter Your Name: ')
-    place_bet(player_pot)
+print('Welcome To BlackJack!!!')
+print("Your Starting Pot is $1000")
+input('Please Enter Your Name: ')
+place_bet(player_pot)
+
+deal_first_hands(dealer_hand, player_hand)
 
 
 
