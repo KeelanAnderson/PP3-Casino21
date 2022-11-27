@@ -153,59 +153,59 @@ def hit(hand, deck):
     hand.adjust_aces()
 
 
-# def hit_or_stay(hand, deck):
-#     """ gives the player the option to hit or stay """
+def hit_or_stay(hand, deck):
+    """ gives the player the option to hit or stay """
     
-#     global playing
+    global playing
 
-#     while True:
-#         option = input("\nDo you want to HIT or STAY ? Enter 'h' or 's': ")
-#         if option.lower() == 'h':
-#             hit(hand, deck)
-#         elif option.lower() == 's':
-#             playing = False
-#             print('Dealer is playing...')
-#             time.sleep(3)
-#         else:
-#             print("Enter 'h' to HIT or 's' to Stay: ")
-#             continue
-#         break
-
-
-# # gameplay
-
-# playing = True
-
-# print()
-# print('Welcome To BlackJack!!!')
-# print("Your Starting Pot is $1000")
-# input('Please Enter Your Name: ')
-# place_bet(player_pot)
+    while True:
+        option = input("\nDo you want to HIT or STAY ? Enter 'h' or 's': ")
+        if option.lower() == 'h':
+            hit(hand, deck)
+        elif option.lower() == 's':
+            playing = False
+            print('Dealer is playing...')
+            time.sleep(3)
+        else:
+            print("Enter 'h' to HIT or 's' to Stay: ")
+            continue
+        break
 
 
-# while playing:
-#     deal_first_hands(player_hand, dealer_hand)
-#     hit_or_stay(player_hand, deck)
+# gameplay
 
-#     if player_hand.value > 21:
-#         print('player busts')
-#         break
+playing = True
 
-#     if player_hand.value == 21:
-#         print('Blackjack!!!')
+print()
+print('Welcome To BlackJack!!!')
+print("Your Starting Pot is $1000")
+input('Please Enter Your Name: ')
+place_bet(player_pot)
 
-# if player_hand.value < 21:
 
-#     while dealer_hand.value < player_hand.value:
-#         hit(dealer_hand, deck)
+while playing:
+    deal_first_hands(player_hand, dealer_hand)
+    hit_or_stay(player_hand, deck)
+
+    if player_hand.value > 21:
+        print('player busts')
+        break
+
+    if player_hand.value == 21:
+        print('Blackjack!!!')
+
+if player_hand.value < 21:
+
+    while dealer_hand.value < player_hand.value:
+        hit(dealer_hand, deck)
     
-#     show_dealers_hand()
+    show_dealers_hand()
 
-#     if dealer_hand.value > 21:
-#         print('dealer busts')
+    if dealer_hand.value > 21:
+        print('dealer busts')
 
-#     elif dealer_hand.value == 21:
-#         print('blackjack')
+    elif dealer_hand.value == 21:
+        print('blackjack')
 
-#     elif dealer_hand.value > player_hand.value:
-#         print('dealer wins')
+    elif dealer_hand.value > player_hand.value:
+        print('dealer wins')
