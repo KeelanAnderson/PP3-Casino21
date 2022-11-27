@@ -44,7 +44,7 @@ class Deck:
         self.deck = []
         for suit in suits:
             for rank in ranks:
-                self.deck.append(Card(suit, rank))
+                self.deck.append(Card(rank, suit))
 
     def __str__(self):
         complete_deck = ''
@@ -124,12 +124,14 @@ def start_round(deck):
     deck.shuffle()
     time.sleep(3)
 
-def deal_first_hands(dealer, player):
-    """ shows the first 2 cards dealt to each player """
+
+
+def deal_first_hands(player, dealer):
+    """ shows the first 4 cards dealt in the game """
 
     print('\nDealer Hand:')
     print('  <Card Hidden>')
-    print()
+    print(dealer.card[1])
 
     print('\nPlayer Hand:')
     print()
@@ -137,12 +139,13 @@ def deal_first_hands(dealer, player):
 
 # gameplay
 
+print(dealer_hand.add_card(deck.deal_card()))
 print('Welcome To BlackJack!!!')
 print("Your Starting Pot is $1000")
 input('Please Enter Your Name: ')
 place_bet(player_pot)
 
-deal_first_hands(dealer_hand, player_hand)
+deal_first_hands(player_hand, dealer_hand)
 
 
 
