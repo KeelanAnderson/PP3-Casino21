@@ -138,83 +138,74 @@ def deal_first_hands(player, dealer):
     print(dealer.cards[1])
 
     print('\nPlayer Hand:  ', *player.cards, sep='\n')
+    print('Player Score = ', player.value)
 
 
-# gameplay
-
-print()
-print('Welcome To BlackJack!!!')
-print("Your Starting Pot is $1000")
-input('Please Enter Your Name: ')
-place_bet(player_pot)
-
-deal_first_hands(player_hand, dealer_hand)
+def show_dealers_hand():
+    """ reveals dealer hand and score to determine the winner """
+    print('\nDealer Hand:  ', *dealer_hand.cards, sep='\n')
+    print('Player Score = ', dealer_hand.value)
 
 
+def hit(hand, deck):
+    """ deals card if to player or dealer if they hit and calls adjusts any aces of score > 21 """
+    hand.add_card(deck.deal_card())
+    hand.adjust_aces()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# player_score  = []
-# dealer_score = []
-
-
-# def pull_card():
-#     """ deals the next card from shuffled deck"""
-#     random.shuffle(deck)
-#     card_pulled = deck.pop()
-#     card_value = values[card_pulled[0]]
+# def hit_or_stay(hand, deck):
+#     """ gives the player the option to hit or stay """
     
-#     card = card_pulled[0] + ' of ' + card_pulled[1]
-#     print(f"    {card}")
-#     del card_pulled
-#     return deck and card_value and card_pulled
+#     global playing
+
+#     while True:
+#         option = input("\nDo you want to HIT or STAY ? Enter 'h' or 's': ")
+#         if option.lower() == 'h':
+#             hit(hand, deck)
+#         elif option.lower() == 's':
+#             playing = False
+#             print('Dealer is playing...')
+#             time.sleep(3)
+#         else:
+#             print("Enter 'h' to HIT or 's' to Stay: ")
+#             continue
+#         break
 
 
-# def deal_dealer_card():
-#     """ deals the next card from shuffled deck"""
-#     random.shuffle(deck)
-#     card_pulled = deck.pop()
-#     card_value = values[card_pulled[0]]
-#     dealer_score.append(card_value)
-#     card = card_pulled[0] + ' of ' + card_pulled[1]
-#     print(f"    {card}")
-#     del card_pulled
-#     return deck and card_value
+# # gameplay
+
+# playing = True
+
+# print()
+# print('Welcome To BlackJack!!!')
+# print("Your Starting Pot is $1000")
+# input('Please Enter Your Name: ')
+# place_bet(player_pot)
 
 
-# def deal_player_card():
-#     """ deals the next card from shuffled deck"""
-#     random.shuffle(deck)
-#     card_pulled = deck.pop()
-#     card_value = values[card_pulled[0]]
-#     player_score.append(card_value)
-#     card = card_pulled[0] + ' of ' + card_pulled[1]
-#     print(f"    {card}")
-#     del card_pulled
-#     return deck and card_value
+# while playing:
+#     deal_first_hands(player_hand, dealer_hand)
+#     hit_or_stay(player_hand, deck)
+
+#     if player_hand.value > 21:
+#         print('player busts')
+#         break
+
+#     if player_hand.value == 21:
+#         print('Blackjack!!!')
+
+# if player_hand.value < 21:
+
+#     while dealer_hand.value < player_hand.value:
+#         hit(dealer_hand, deck)
     
+#     show_dealers_hand()
 
-# def calculate_score(value):
-#     """ calculate player score """
-#     Sum = sum(value)
-#     print(Sum)
+#     if dealer_hand.value > 21:
+#         print('dealer busts')
+
+#     elif dealer_hand.value == 21:
+#         print('blackjack')
+
+#     elif dealer_hand.value > player_hand.value:
+#         print('dealer wins')
