@@ -49,8 +49,8 @@ class Deck:
     def __str__(self):
         complete_deck = ''
         for card in self.deck:
-            complete_deck += '\n ' + complete_deck
-        return complete_deck
+            complete_deck += '\n ' + card.__str__()
+        return 'The Deck has: ' + complete_deck
 
     def shuffle(self):
         """ shuffles the deck of cards """
@@ -59,7 +59,7 @@ class Deck:
     def deal_card(self):
         """ deals a single card from the deck """
         single_card = self.deck.pop()
-        print(single_card)
+        return single_card
 
 
 class Hand:
@@ -73,8 +73,8 @@ class Hand:
     def add_card(self, card):
         """ add a card to player or dealers hand """
         self.cards.append(card)
-        self.value += values[card.ranks]
-        if (card.rank == 'Ace'):
+        self.value += values[card.rank]
+        if card.rank == 'Ace':
             self.aces += 1
 
     def adjust_aces(self):
@@ -90,7 +90,10 @@ deck = Deck()
 player_pot = Pot()
 player_hand = Hand()
 dealer_hand = Hand()
-
+dealer_hand.add_card(deck.deal_card())
+dealer_hand.add_card(deck.deal_card())
+player_hand.add_card(deck.deal_card())
+player_hand.add_card(deck.deal_card())
 
 def place_bet(pot):
     """ Prompts user to input their bet amounts """
@@ -119,27 +122,27 @@ def accept_bet(bet, pot):
 
     return True
 
+
 def start_round(deck):
+    """ shuffles the deck and starts the game """
     print('Dealer Shuffling Deck...\n')
     deck.shuffle()
     time.sleep(3)
-
 
 
 def deal_first_hands(player, dealer):
     """ shows the first 4 cards dealt in the game """
 
     print('\nDealer Hand:')
-    print('  <Card Hidden>')
-    print(dealer.card[1])
+    print('<Card Hidden>')
+    print(dealer.cards[1])
 
-    print('\nPlayer Hand:')
-    print()
-    print()
+    print('\nPlayer Hand:  ', *player.cards, sep='\n')
+
 
 # gameplay
 
-print(dealer_hand.add_card(deck.deal_card()))
+print()
 print('Welcome To BlackJack!!!')
 print("Your Starting Pot is $1000")
 input('Please Enter Your Name: ')
