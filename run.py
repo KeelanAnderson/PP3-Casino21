@@ -1,19 +1,33 @@
 import random
 import time
-import itertools
 
 values = {'Ace': 11, 'Two': 2, 'Three': 3, 'Four': 4,
-          'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8, 
+          'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8,
           'Nine': 9, 'Ten': 10, 'Jack': 10, 'Queen': 10, 'King': 10}
 suits = ('Diamonds', 'Hearts', 'Clubs', 'Spades')
 ranks = ('Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King')
 
-# deck = list(itertools.product(values, suits))
-starting_pot = 1000
+
+# Classes
+
+class Pot:
+    """ creates instance of players pot """
+
+    def __init__(self):
+        self.pot = 1000
+        self.bet = 0
+
+    def win_bet(self):
+        """ adds bet to pot if player wins """
+        self.pot += self.bet
+        
+    def lose_bet(self):
+        """ takes bet if player loses """
+        self.pot -= self.bet
 
 
 class Card:
-    """ creates instance of cards in deck """                                                                               
+    """ creates instance of cards in deck """
 
     def __init__(self, rank, suit):
         self.rank = rank
@@ -26,24 +40,24 @@ class Card:
 class Deck:
     """ creates instances of a deck of playing cards """
 
-    def __init__(deck):
+    def __init__(self):
         self.deck = []
         for suit in suits:
             for rank in ranks:
                 self.deck.append(Card(suit, rank))
 
     def __str__(self):
-        
         complete_deck = ''
         for card in self.deck:
             complete_deck += '\n ' + complete_deck
         return complete_deck
 
     def shuffle(self):
+        """ shuffles the deck of cards """
         random.shuffle(self.deck)
 
-
     def deal_card(self):
+        """ deals a single card from the deck """
         single_card = self.deck.pop()
         print(single_card)
 
@@ -54,19 +68,19 @@ class Hand:
     def __init__(self):
         self.cards = []
         self.value = 0 
-        self.aces = 0 # counts the aces in the hand so there can be adjusted if hand > 21
+        self.aces = 0 # counts the aces in the hand so they can be adjusted if hand > 21
 
     def add_card(self, card):
         """ add a card to player or dealers hand """
         self.cards.append(card)
-        self.values += values[card.rank]
+        self.value += values[card.rank]
         if (card.rank == 'Ace'):
             self.aces += 1
 
     def adjust_aces(self):
         """ changes the value of an ace in the hand if the score exceeds 21 """
-        while self.values > 21 and self.aces:
-            self.values -= 10
+        while self.value > 21 and self.aces:
+            self.value -= 10
             self.aces -= 1
 
 
