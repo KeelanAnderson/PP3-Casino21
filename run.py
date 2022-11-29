@@ -132,6 +132,8 @@ def accept_bet(bet, pot):
 
     return True
 
+# game
+
     
 def start_round(deck):
     """ shuffles the deck and starts the game """
@@ -160,14 +162,13 @@ def show_dealers_hand():
 def show_players_hand():
     """ reveals dealer hand and score to determine the winner """
     print('\nPlayer Hand:  ', *player_hand.cards, sep='\n')
-    print('Player Score = ', player_hand.value)
+    print('Player Score = ', player_hand.value, '\n')
 
 
 def hit(hand, deck):
     """ deals card if to player or dealer if they hit and calls adjusts any aces of score > 21 """
     hand.add_card(deck.deal_card())
     hand.adjust_aces()
-    show_players_hand()
 
 
 def hit_or_stay(hand, deck):
@@ -188,15 +189,19 @@ def hit_or_stay(hand, deck):
             continue
         break
 
+# game loop to next round
+
 
 def next_round(pot):
     """ offers the user the chance to play another round or cash in their bets """
 
     while True:
-        play_again = input("Would you like to play another round or cash in your bets? Enter 'play' or 'cash': ")
+        play_again = input("\nWould you like to play another round or cash in your bets? Enter 'play' or 'cash': ")
         if play_again.lower() == 'play':
             place_bet(pot)
+
             # clear
+
         elif play_again.lower() == 'cash':
             print(f" $$$ you won ${pot.show_pot()}. Thanks for playing! $$$ ")
             exit()
@@ -212,6 +217,7 @@ def player_busts():
     """ keep bets, dealer wins, offer next round """
 
     print('Player Busts')
+    show_players_hand()
     dealer_wins(player_pot)
     next_round(player_pot)
 
@@ -229,6 +235,7 @@ def player_wins(pot):
     print('Player Wins!!!')
     player_pot.win_bet()
     print(f"Pot: ${pot.show_pot()}")
+    next_round(player_pot)
 
 
 def dealer_wins(pot):
@@ -236,6 +243,7 @@ def dealer_wins(pot):
     print('Dealer Wins!!!')
     pot.lose_bet()
     print(f"Pot: ${pot.show_pot()}")
+    next_round(player_pot)
 
 
 def round_draw(pot):
@@ -253,6 +261,7 @@ print('Welcome To BlackJack!!!')
 print("Your Starting Pot is $1000")
 input('Please Enter Your Name: ')
 place_bet(player_pot)
+
 
 
 while playing:
