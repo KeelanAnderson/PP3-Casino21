@@ -154,13 +154,20 @@ def deal_first_hands(player, dealer):
 def show_dealers_hand():
     """ reveals dealer hand and score to determine the winner """
     print('\nDealer Hand:  ', *dealer_hand.cards, sep='\n')
-    print('Player Score = ', dealer_hand.value)
+    print('Dealer Score = ', dealer_hand.value)
+
+
+def show_players_hand():
+    """ reveals dealer hand and score to determine the winner """
+    print('\nPlayer Hand:  ', *player_hand.cards, sep='\n')
+    print('Player Score = ', player_hand.value)
 
 
 def hit(hand, deck):
     """ deals card if to player or dealer if they hit and calls adjusts any aces of score > 21 """
     hand.add_card(deck.deal_card())
     hand.adjust_aces()
+    show_players_hand()
 
 
 def hit_or_stay(hand, deck):
@@ -275,6 +282,10 @@ if player_hand.value <= 21:
 
     elif dealer_hand.value == 21:
         print('blackjack') 
+        if player_hand.value == 21:
+            round_draw(player_pot)
+        else:
+            dealer_wins(player_pot)
 
     elif dealer_hand.value > player_hand.value:
         dealer_wins(player_pot)
