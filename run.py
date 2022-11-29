@@ -20,10 +20,12 @@ class Pot:
     def win_bet(self):
         """ adds bet to pot if player wins """
         self.pot += self.bet
+        return pot
         
     def lose_bet(self):
         """ takes bet if player loses """
         self.pot -= self.bet
+        return pot
 
 
 class Card:
@@ -46,11 +48,11 @@ class Deck:
             for rank in ranks:
                 self.deck.append(Card(rank, suit))
 
-    def __str__(self):
-        complete_deck = ''
-        for card in self.deck:
-            complete_deck += '\n ' + card.__str__()
-        return 'The Deck has: ' + complete_deck
+    # def __str__(self):
+    #     complete_deck = ''
+    #     for card in self.deck:
+    #         complete_deck += '\n ' + card.__str__()
+    #     return 'The Deck has: ' + complete_deck
 
     def shuffle(self):
         """ shuffles the deck of cards """
@@ -95,6 +97,8 @@ dealer_hand.add_card(deck.deal_card())
 player_hand.add_card(deck.deal_card())
 player_hand.add_card(deck.deal_card())
 
+# Betting
+
 def place_bet(pot):
     """ Prompts user to input their bet amounts """
     print('Minimum bets are $50')
@@ -122,6 +126,7 @@ def accept_bet(bet, pot):
 
     return True
 
+    
 
 def start_round(deck):
     """ shuffles the deck and starts the game """
@@ -172,6 +177,43 @@ def hit_or_stay(hand, deck):
         break
 
 
+def next_round(pot):
+    """ offers the user the chance to play another round or cash in their bets """
+
+    while True:
+        play_again = input("Would you like to play another round or cash in your bets? Enter 'play' or 'cash'")
+        if play_again.lower() == 'play':
+            place_bet(pot)
+            # clear
+        elif play_again.lower() == 'cash':
+            print(f" $$$ you won ${pot}. Thanks for playing! $$$ ")
+            exit()
+        else:
+            print("Enter 'play' to Play another round or 'cash' to Leave the Casino: ")
+            continue
+        break
+
+# game outcomes
+
+
+def player_busts():
+    """ keep bets, dealer wins, offer next round """
+
+    print('Player Busts')
+    print('Dealer wins')
+    player_pot.lose_bet()
+    next_round(player_pot)
+
+
+def dealer_busts():
+    """ player wins, award winnings, offer next round """
+
+    print('Dealer Busts')
+    print('Player wins')
+    player_pot.win_bet()
+    next_round(player_pot)
+
+
 # gameplay
 
 playing = True
@@ -188,13 +230,13 @@ while playing:
     hit_or_stay(player_hand, deck)
 
     if player_hand.value > 21:
-        print('player busts')
+        player_busts() # keep bets dealer wins
         break
 
     if player_hand.value == 21:
         print('Blackjack!!!')
 
-if player_hand.value < 21:
+if player_hand.value <= 21:
 
     while dealer_hand.value < player_hand.value:
         hit(dealer_hand, deck)
@@ -202,10 +244,36 @@ if player_hand.value < 21:
     show_dealers_hand()
 
     if dealer_hand.value > 21:
-        print('dealer busts')
+        print('dealer busts') # player wins return bet * 2
 
     elif dealer_hand.value == 21:
-        print('blackjack')
+        print('blackjack') 
 
     elif dealer_hand.value > player_hand.value:
-        print('dealer wins')
+        print('dealer wins') # keep players bet dealer wins
+
+    elif dealer_hand.value == player_hand.value:
+        print('Its a Draw') # return players bet
+        
+
+def player_wins(player, dealer, pot):
+    """ returns results if player wins """
+    print('Player Wins!!!')
+    player_pot.win_bet()
+    print(f"Pot: ${pot}")
+
+
+def dealer_wins(player, dealer, pot):
+    """ returns results if player loses"""
+    print('Dealer Wins!!!')
+    player_pot.lose_bet()
+    print(f"Pot: ${pot}")
+
+
+def round_draw(player, dealer, pot):
+    """ returns the results if a draw """
+    print('Its a Draw!')
+    print(f"Pot: ${pot}")
+
+
+ 
