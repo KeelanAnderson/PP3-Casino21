@@ -104,6 +104,8 @@ dealer_hand.add_card(deck.deal_card())
 dealer_hand.add_card(deck.deal_card())
 player_hand.add_card(deck.deal_card())
 player_hand.add_card(deck.deal_card())
+player_hand.adjust_aces()
+dealer_hand.adjust_aces()
 
 # Functions
 
@@ -172,6 +174,32 @@ def hit(hand, deck):
     hand.adjust_aces()
 
 
+def dealer_plays():
+    """ makes the dealers decision to hit or stay """
+
+    while dealer_hand.value < player_hand.value and dealer_hand.value < 21:
+        hit(dealer_hand, deck)
+        show_dealers_hand()
+        time.sleep(3)  
+
+    if dealer_hand.value > 21:
+        dealer_busts()
+
+    elif dealer_hand.value == 21:
+        print('Blackjack')
+        if dealer_hand.value == player_hand.value:
+            round_draw(player_pot)
+        else:
+            dealer_wins(player_pot)
+
+    elif dealer_hand.value > player_hand.value and dealer_hand.value <= 21:
+        show_dealers_hand()
+        dealer_wins(player_pot)
+    elif dealer_hand.value == player_hand.value:
+        show_dealers_hand()
+        round_draw(player_pot)
+
+        
 def hit_or_stay(hand, deck):
     """ gives the player the option to hit or stay """
 
@@ -190,6 +218,7 @@ def hit_or_stay(hand, deck):
         elif option.lower() == 's':
             print('Dealer is playing...')
             time.sleep(3)
+            dealer_plays()
             break
         else:
             print("Enter 'h' to HIT or 's' to Stay: ")
@@ -213,7 +242,6 @@ def next_round(pot):
         else:
             print("Enter 'play' to Play another round or 'cash' to Leave the Casino: ")
             continue
-        break
 
 
 # game outcomes
@@ -254,26 +282,8 @@ def player_busts():
     dealer_wins(player_pot)
 
 
-def dealer_plays():
 
-    while dealer_hand.value < player_hand.value:
-        hit(dealer_hand, deck)
-        show_dealers_hand()
 
-        if dealer_hand.value > 21:
-            dealer_busts()
-
-            break
-        elif dealer_hand.value == 21:
-            print('Blackjack')
-            if dealer_hand.value == player_hand.value:
-                round_draw(player_pot)
-            else:
-                dealer_wins(player_pot)
-
-        elif dealer_hand.value > player_hand.value:
-            dealer_wins(player_pot)
-        
 
 def game_play():
     """ calls each game function in order to run the game loop """
