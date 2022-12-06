@@ -223,9 +223,9 @@ def hit_or_stay(hand, deck):
 
 def next_round(pot):
     """ offers the user the chance to play another round or cash in their bets """
-    play_again = input(
-                "\nWould you like to play another round or "
-                "cash in your bets? Enter 'play' or 'cash': ")
+
+    print("\nWould you like to play another round or cash in your bets?")
+    play_again = input("Enter 'play' or 'cash': ")
 
     while True:
         
