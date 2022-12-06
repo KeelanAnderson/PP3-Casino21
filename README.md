@@ -15,6 +15,23 @@ In this game the user will be given a starting pot of $1000 from which they can 
 ## Features
 ### Existing Features
 
+#### Introduction
+
+When the prgram is run first it will print "Welcome to Blacljack!!!" with the pyfiglet library
+then in normal text it will display the starting pot amount and prompy the user to enter their name. There is no restriction on the names than can be entered here. 
+
+#### Place bet
+
+next the user user will be prompted to place a bet. the pyinputplus library is used here to hanlde invalid input. The minimum bet is $50 and the maximum is whatever amount is in the pot at the time. If anything else is typed in the user will be promped to enter in a number that iss valid. One the bet has been validated by the accept_bet function it will show that the bet was placed , the money lwft in the pot after the bet, and the dealer will begin shuffling the deck and deal 2 cards to both the dealer and the player and the game will begin. the cards dealt will be displayed except for the dealers first card which isnt revealed until the dealer starts playing.
+
+#### Player Hand
+
+The players hand is all the cards in possesion of the player at any time. The first hand will be the first 2 cards dealt and each card will be displayed on screen along with the value of this cards added together. From this the player with understand very easily the value of their hand and can decided whether they want to gamble on improving this hand or keep it.
+
+#### Hit or Stay
+
+The user will be promped with a message saying "Do you want to hit or stay?" they must enter 'h' if they wish to hit and be dealt another card to their hand or 's' if they wish to stay with the hand they have. This message will keep poping up each time the user hits until thet decide to stay with the hand they have, At which point the dealer will begin to play. if at any time the value of the players hand goes above 21 the player will go bust and the dealer automatically wins.
+
 ### Future Features
 
 ## Data Model
