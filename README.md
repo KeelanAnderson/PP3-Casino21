@@ -55,11 +55,26 @@ the hand class creates 2 instances of players hand and dealers hand. it stores t
 
 ## Tesing
 
+I have manually tested this project be doing the following:
+
+- Passed the code through a PEP8 linter and confirmed there are no problems
+- Given invalid inputs strings when numbers are expected and vice versa, empty inputs, out of bounds inputs and same inputs twice
+- Tested the program in my local terminal and the Code Institute Heroku terminal.
+
 ### Bugs
 #### solved bugs
+
+- game loop advice from mentor to take it step by step and showed how to use breakpoints and debugger on gitpod.
+- reset function
+- double ace in player hand when testing add adjust for aces to the start
+
 #### unsolved bugs
 
+- no unsolved bugs
+
 #### Validator testing
+##### PEP8
+- No errors were returned from PEP8online.com
 
 ## Deployment
 
