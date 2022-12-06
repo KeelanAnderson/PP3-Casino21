@@ -1,5 +1,3 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
 # Blackjack Game
 
 This is my third project on the Full Stack Web Developer at Code Institute course. The aim was to build a command-line application that allows your users to manage a common dataset about a particular domain. I decided to go with my own idea for this project after examining the brief and create a game of Blackjack.
@@ -31,6 +29,18 @@ The players hand is all the cards in possesion of the player at any time. The fi
 #### Hit or Stay
 
 The user will be promped with a message saying "Do you want to hit or stay?" they must enter 'h' if they wish to hit and be dealt another card to their hand or 's' if they wish to stay with the hand they have. This message will keep poping up each time the user hits until thet decide to stay with the hand they have, At which point the dealer will begin to play. if at any time the value of the players hand goes above 21 the player will go bust and the dealer automatically wins.
+
+#### Dealer Hand
+
+After the player has stayed its the dealers turn to play. the dealer has the advantage knowing the players score. the dealers hand will be displayed every time they hit with a 3 seconds pause each time so the user can keep track. If the dealers hand is less than the player hand in value the dealer will hit. they will keep hitting until their value is higher than the players or the same for a draw. The dealer will lose if they go bust trying to beat the player.
+
+#### Result
+
+The outcome of the game be displayed at the end. There are 5 different outcomes in this game and 3 different result. Either the play or the dealer can bust which results in the opposite side winning. Either player can win be obtaining a higher score than their opponent or if their hands values are the same they will draw. if the player wins they win back their bet and the amount of their bet. If they lose the dealer keeps the bets and if its a draw the bet placed is returned to be player. When the game is over the winner is displayed and the ammount thats in the players pot.
+
+#### Next Round
+
+The game will then ask the user "Would you like to play another round or cash in your bets?". It then prompts the user to enter 'play' or 'cash'. if the user enters 'play' a new round will begin starting with the bets. if the user enters 'cash' the game will display the ammount the players had in their pot and thank them for playing and the program finishes. For example: $$$ you won $12345 Thanks for playing! $$$. If the user decides to play but has less than $50 they will be kicked out of the casino and the message "You Went Broke, Better Luck Next Time!" will be displayed on screen and the program will end. If the user enters anython others than 'play' or 'cash' they will be prompted to try again. They must enter 'play' or 'cash' to continue.
 
 ### Future Features
 

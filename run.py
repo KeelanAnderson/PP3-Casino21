@@ -113,7 +113,7 @@ def place_bet(pot):
         player_pot.bet = pyip.inputNum(min=50, max=player_pot.pot)
         if accept_bet(player_pot.bet, player_pot.pot):
             remaining_pot = player_pot.pot - player_pot.bet
-            print('Bet placed!')
+            print('\nBet placed!')
             print(f"Pot: ${remaining_pot}")
             start_round()
             break
