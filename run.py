@@ -1,6 +1,7 @@
 import random
 import time
 import pyfiglet
+import pyinputplus as pyip
 
 values = {'Ace': 11, 'Two': 2, 'Three': 3, 'Four': 4,
           'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8,
@@ -54,12 +55,6 @@ class Deck:
             for rank in ranks:
                 self.deck.append(Card(rank, suit))
 
-    def __str__(self):
-        complete_deck = ''
-        for card in self.deck:
-            complete_deck += '\n ' + card.__str__()
-        return 'The Deck has: ' + complete_deck
-
     def shuffle(self):
         """ shuffles the deck of cards """
         random.shuffle(self.deck)
@@ -112,9 +107,10 @@ dealer_hand.adjust_aces()
 
 def place_bet(pot):
     """ Prompts user to input their bet amounts """
+    print('Place Your Bet')
     print('Minimum bets are $50')
     while True:
-        player_pot.bet = int(input('Place your Bet: $ \n'))
+        player_pot.bet = pyip.inputNum(min=50, max=player_pot.pot)
         if accept_bet(player_pot.bet, player_pot.pot):
             remaining_pot = player_pot.pot - player_pot.bet
             print('Bet placed!')
@@ -229,22 +225,38 @@ def next_round(pot):
     """ offers the user the chance to play another round or cash in their bets """
     play_again = input(
                 "\nWould you like to play another round or "
-                "cash in your bets? Enter 'play' or 'cash': \n")
+                "cash in your bets? Enter 'play' or 'cash': ")
 
     while True:
         
         if play_again.lower() == 'play':
-            reset()
-            game_play()
+            if player_pot.pot < 50:
+                print("\nYou Went Broke, Better Luck Next Time!")
+                break
+            else:
+                reset()
+                game_play()
         elif play_again.lower() == 'cash':
             print(f" $$$ you won ${pot.show_pot()}. Thanks for playing! $$$ ")
             quit()
         else:
-            print("Enter 'play' to Play another round or 'cash' to Leave the Casino: ")
-            continue
+            print("Enter 'play' to Play another round "
+                  "or 'cash' to Leave the Casino: ")
+            next_round(player_pot)
+            break
+            
+        
 
 
 # game outcomes
+
+
+def player_busts():
+    """ keep bets, dealer wins, offer next round """
+
+    print('Player Busts')
+    show_players_hand()
+    dealer_wins(player_pot)
 
 
 def dealer_busts():
@@ -274,15 +286,7 @@ def round_draw(pot):
     print(f"Pot: ${pot.show_pot()}")
 
 
-def player_busts():
-    """ keep bets, dealer wins, offer next round """
-
-    print('Player Busts')
-    show_players_hand()
-    dealer_wins(player_pot)
-
-
-
+# game loop
 
 
 def game_play():
@@ -292,7 +296,7 @@ def game_play():
     deal_first_hands(player_hand, dealer_hand)
     hit_or_stay(player_hand, deck)
     next_round(player_pot)
-    
+
 
 def reset():
     """ resets all the values for the nexr round """
@@ -307,7 +311,7 @@ def reset():
     player_hand.add_card(deck.deal_card())
     player_hand.add_card(deck.deal_card())
 
-# game
+# game intro
 
 print()
 intro = pyfiglet.figlet_format('Welcome To BlackJack!!!')
@@ -315,8 +319,3 @@ print(intro)
 print("Your Starting Pot is $1000")
 input('Please Enter Your Name: ')
 game_play()
-
-
-
-
-
