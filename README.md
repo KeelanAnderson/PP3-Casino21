@@ -14,7 +14,6 @@ In this game the user will be given a starting pot of $1000 from which they can 
 
 ## Features
 ### Existing Features
-
 #### Introduction
 
 When the prgram is run first it will print "Welcome to Blacljack!!!" with the pyfiglet library
@@ -46,9 +45,13 @@ The game will then ask the user "Would you like to play another round or cash in
 
 ### Future Features
 
-some future features I would like to include would be a high scores leaderboard displaying the top 10 players that cashed out with the highest ammount. Another feature I would like to include would be a menu where the user could choose from multiple different cards games to play from which would make the app like an online casino. 
+Some future features I would like to include would be a high scores leaderboard displaying the top 10 players that cashed out with the highest ammount. Another feature I would like to include would be a menu where the user could choose from multiple different cards games to play from which would make the app like an online casino. 
 
 ## Data Model
+
+I have 4 different classes in my project. The pot class, card class, decl class and hand class. the pot class creates an instance of the players pot. The pot class stores the ammount in the players pot and the ammount the player bets. This class also has methods including win_bet, lose_bet and show_pot. The win_bet method will add the winnings to players pot. The lose_bet method will takes the betted ammount from the pot and the show_pot method will print out the ammount in the players pot at any given time.
+the card class creates an instance of a single card. it stores the ranks and suits of the cards. The deck class creates an instance of a deck of 52 playing cards. It stores an the cards of the deck in a list. it has method to shuffle the deck and deal a single card from the deck and remove it from the list and into the game.
+the hand class creates 2 instances of players hand and dealers hand. it stores the cards of each hand in a list, the value of the hand and the value of the aces in the hand. It has the methods add_card which adds a card from the deck to the hand and the adjust_aces method which chances the value of an ace in the hand from 11 to 1 if the value of the hand was to go above 21. 
 
 ## Tesing
 
