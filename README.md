@@ -4,6 +4,8 @@ This is my third project on the Full Stack Web Developer at Code Institute cours
 Its one of my favourite card games and I was very excited to build it for my project. Blackjack is a python terminal game, which runs in the Code Institue mock terminal on Heroku.
 Users will play against the computer who will be the dealer in a game of blackjack, also known as 21. They will be given a starting pot of $1000 from which they can make bets and then play a round of blackjack until they either lose all of their money or cash out and "Leave the Casino".
 
+[Here is the live version of my project](https://blackjack-keelananderson.herokuapp.com/)
+
 ## How to play Blackjack
 
 The game follows the traditional rules of Blackjack. you csn find out more abouit it on https://www.blackjackapprenticeship.com/how-to-play-blackjack/
@@ -40,9 +42,11 @@ The outcome of the game be displayed at the end. There are 5 different outcomes 
 
 #### Next Round
 
-The game will then ask the user "Would you like to play another round or cash in your bets?". It then prompts the user to enter 'play' or 'cash'. if the user enters 'play' a new round will begin starting with the bets. if the user enters 'cash' the game will display the ammount the players had in their pot and thank them for playing and the program finishes. For example: $$$ you won $12345 Thanks for playing! $$$. If the user decides to play but has less than $50 they will be kicked out of the casino and the message "You Went Broke, Better Luck Next Time!" will be displayed on screen and the program will end. If the user enters anython others than 'play' or 'cash' they will be prompted to try again. They must enter 'play' or 'cash' to continue.
+The game will then ask the user "Would you like to play another round or cash in your bets?". It then prompts the user to enter 'play' or 'cash'. if the user enters 'play' a new round will begin starting with the bets. if the user enters 'cash' the game will display the ammount the players had in their pot and thank them for playing and the program finishes. For example,  $$$ you won $12345 Thanks for playing! $$$ . If the user decides to play but has less than $50 they will be kicked out of the casino and the message "You Went Broke, Better Luck Next Time!" will be displayed on screen and the program will end. If the user enters anython others than 'play' or 'cash' they will be prompted to try again. They must enter 'play' or 'cash' to continue.
 
 ### Future Features
+
+some future features I would like to include would be a high scores leaderboard displaying the top 10 players that cashed out with the highest ammount. Another feature I would like to include would be a menu where the user could choose from multiple different cards games to play from which would make the app like an online casino. 
 
 ## Data Model
 
