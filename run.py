@@ -183,94 +183,37 @@ def hit_or_stay(hand, deck):
         if option.lower() == 'h':
             hit(hand, deck)
             show_players_hand()
+            if player_hand.value > 21:
+                player_busts()
+                break
+            
         elif option.lower() == 's':
             print('Dealer is playing...')
             time.sleep(3)
-            playing = False
+            break
         else:
             print("Enter 'h' to HIT or 's' to Stay: ")
             continue
-        break
-
+        
 
 def next_round(pot):
     """ offers the user the chance to play another round or cash in their bets """
+    play_again = input(
+                "\nWould you like to play another round or "
+                "cash in your bets? Enter 'play' or 'cash': \n")
 
     while True:
-        play_again = input(
-            "\nWould you like to play another round or "
-            "cash in your bets? Enter 'play' or 'cash': \n")
+        
         if play_again.lower() == 'play':
-            place_bet(player_pot)
-            playing = True
-            # clear
+            reset()
+            game_play()
         elif play_again.lower() == 'cash':
             print(f" $$$ you won ${pot.show_pot()}. Thanks for playing! $$$ ")
             quit()
         else:
             print("Enter 'play' to Play another round or 'cash' to Leave the Casino: ")
             continue
-
-
-def player_busts():
-    """ keep bets, dealer wins, offer next round """
-
-    print('Player Busts')
-    show_players_hand()
-    dealer_wins(player_pot)
-
-
-# game
-
-print()
-print('Welcome To BlackJack!!!')
-print("Your Starting Pot is $1000")
-input('Please Enter Your Name: ')
-
-playing = True
-
-while True:
-
-    place_bet(player_pot)
-    deal_first_hands(player_hand, dealer_hand)
-
-    while playing:
-
-        hit_or_stay(player_hand, deck)
-
-        if player_hand.value > 21:
-            player_busts()  # keep bets dealer wins
-            playing = False
-
-        if player_hand.value == 21:
-            show_players_hand()
-            print('Blackjack!!!\n')
-            playing = False
-            print('Dealer is playing...')
-            time.sleep(3)
-
-    if player_hand.value <= 21:
-
-        while dealer_hand.value < player_hand.value:
-            hit(dealer_hand, deck)
-
-        show_dealers_hand()
-
-        if dealer_hand.value > 21:
-            dealer_busts()
-
-        elif dealer_hand.value == 21:
-            print('blackjack')
-            if player_hand.value == 21:
-                round_draw(player_pot)
-            else:
-                dealer_wins(player_pot)
-
-        elif dealer_hand.value > player_hand.value:
-            dealer_wins(player_pot)
-
-        elif dealer_hand.value == player_hand.value:
-            round_draw(player_pot)
+        break
 
 
 # game outcomes
@@ -301,3 +244,86 @@ def round_draw(pot):
     """ returns the results if a draw """
     print('Its a Draw!')
     print(f"Pot: ${pot.show_pot()}")
+
+
+def player_busts():
+    """ keep bets, dealer wins, offer next round """
+
+    print('Player Busts')
+    show_players_hand()
+    dealer_wins(player_pot)
+
+
+def dealer_plays():
+
+    while dealer_hand.value < player_hand.value:
+        hit(dealer_hand, deck)
+        show_dealers_hand()
+
+        if dealer_hand.value > 21:
+            dealer_busts()
+
+            break
+        elif dealer_hand.value == 21:
+            print('Blackjack')
+            if dealer_hand.value == player_hand.value:
+                round_draw(player_pot)
+            else:
+                dealer_wins(player_pot)
+
+        elif dealer_hand.value > player_hand.value:
+            dealer_wins(player_pot)
+        
+
+def game_play():
+    """ calls each game function in order to run the game loop """
+
+    place_bet(player_pot)
+    deal_first_hands(player_hand, dealer_hand)
+    hit_or_stay(player_hand, deck)
+    next_round(player_pot)
+    
+
+def reset():
+    """ resets all the values for the nexr round """
+
+    deck.__init__()
+    deck.shuffle()
+    player_hand.__init__()
+    dealer_hand.__init__()
+
+    dealer_hand.add_card(deck.deal_card())
+    dealer_hand.add_card(deck.deal_card())
+    player_hand.add_card(deck.deal_card())
+    player_hand.add_card(deck.deal_card())
+
+
+# def check_score(hand):
+
+#     if hand.value > 21:
+#         player_busts()  # keep bets dealer wins
+
+#     elif player_hand.value == 21:
+#         show_players_hand()
+#         print('Blackjack!!!\n')
+#         print('Dealer is playing...')
+#         time.sleep(3)
+
+#     elif player_hand.value <= 21:
+#         dealer_plays()
+
+
+
+
+# game
+
+print()
+print('Welcome To BlackJack!!!')
+print("Your Starting Pot is $1000")
+input('Please Enter Your Name: ')
+game_play()
+
+
+
+
+
