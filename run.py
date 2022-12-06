@@ -307,28 +307,11 @@ def reset():
     player_hand.add_card(deck.deal_card())
     player_hand.add_card(deck.deal_card())
 
-
-# def check_score(hand):
-
-#     if hand.value > 21:
-#         player_busts()  # keep bets dealer wins
-
-#     elif player_hand.value == 21:
-#         show_players_hand()
-#         print('Blackjack!!!\n')
-#         print('Dealer is playing...')
-#         time.sleep(3)
-
-#     elif player_hand.value <= 21:
-#         dealer_plays()
-
-
-
-
 # game
 
 print()
-print('Welcome To BlackJack!!!')
+intro = pyfiglet.figlet_format('Welcome To BlackJack!!!')
+print(intro)
 print("Your Starting Pot is $1000")
 input('Please Enter Your Name: ')
 game_play()
