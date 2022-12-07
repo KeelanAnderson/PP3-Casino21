@@ -113,8 +113,7 @@ dealer_hand.add_card(deck.deal_card())
 dealer_hand.add_card(deck.deal_card())
 player_hand.add_card(deck.deal_card())
 player_hand.add_card(deck.deal_card())
-player_hand.adjust_aces()
-dealer_hand.adjust_aces()
+
 
 # Functions
 
@@ -171,6 +170,8 @@ def start_round():
 
 def deal_first_hands(player, dealer):
     """ shows the first 4 cards dealt in the game """
+    player.adjust_aces()
+    dealer.adjust_aces()
 
     print('\nDealer Hand:')
     print('<Card Hidden>')

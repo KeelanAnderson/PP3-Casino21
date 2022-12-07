@@ -85,19 +85,20 @@ I have manually tested this project be doing the following:
 - Given invalid inputs strings when numbers are expected and vice versa, empty inputs, out of bounds inputs and same inputs twice
 - Tested the program in my local terminal and the Code Institute Heroku terminal.
 
+![ python linter ](/readme-images/blackjack-linter.png "Text to show on mouseover")
+
 ### Bugs
 #### solved bugs
 
-- I really struggled at the end of the project trying to get the game to enter into another round after the first one i tried using too many while loops and wasnt making any progress. This was very frustrating and I spoken to my mentor about it. He showed me how to use breakpoints and the run and debug section in gitpod so i could see how my code was executing line by line. Thid was a massive help and a push in the right direction. I scraped all the new code i had written and went back to the point in my program that was running smoothly. Then executing the code line by line and writing new code as I went. I was able to make progress a lot easier and more quickly. In future this is how I will write my code, before I was guilty of trying to do to many things at once and makeing a mess of my code. This is something I need to work on to make life easier. 
+- I really struggled at the end of the project trying to get the game to enter into another round after the first one i tried using too many while loops and wasnt making any progress. This was very frustrating and I spoken to my mentor about it. He showed me how to use breakpoints and the run and debug section in gitpod so i could see how my code was executing line by line. This was a massive help and a push in the right direction. I scraped all the new code i had written and went back to the point in my program that was running smoothly. Then executing the code line by line and writing new code as I went. I was able to make progress a lot easier and more quickly. In future this is how I will write my code, before I was guilty of trying to do to many things at once and makeing a mess of my code. This is something I need to work on to make life easier. 
 
-- When I first made the game loop into the next round the player and dealer hands werent clearing from the round before. This was obviously a problem because we needed to start from scatch for thr next round. To solve this Imade the reset function when initialises the hand and deck class instances and also reshiffles the deck. This function was called before the new game was started and seems to hae fixed the problem.  
+- When I first made the game loop into the next round the player and dealer hands werent clearing from the round before. This was obviously a problem because we needed to start from scatch for thr next round. To solve this Imade the reset function when initialises the hand and deck class instances and also reshiffles the deck. This function was called before the new game was started and seems to have fixed the problem.  
 
-- when texting my game by playing it I was dealt the rare first hand of double aces which displayed a score of 22 on screen. I quickly realised I had not called my adjust_aces method at the start of the game and this was a problem. I added the adjust_aces method for the player and dealer hands under where I added the cards at the start and the problem was solved. I was lucky to have noticed this as the chances of drawing this hand at the beginning of the game are very low and it could have easilt went unoticed.  
+- when testing the game by playing it I was dealt the rare first hand of double aces which displayed a score of 22 on screen. I quickly realised I had not called my adjust_aces method at the start of the game and this was a problem. I added the adjust_aces method for the player and dealer hands under where I added the cards at the start but the problem was not solved so I added the methods to the start of my hit_or_stay function and this solved the problem. I was lucky to have noticed this as the chances of drawing this hand at the beginning of the game are very low and it could have easilt went unoticed.  
 
 #### unsolved bugs
 
-- no unsolved bugs
-- you went broke printing at the end of the game the ammount of times play was typed.
+- "You went broke" message printing the same number of times as rounds played. I decided to left this untouched for now as I think it looks like a nice feature.
 
 #### Validator testing
 ##### PEP8
@@ -110,10 +111,16 @@ This project was deployed using code institues mock terminal for heroku
 #### Steps for deployment:
 
 - fork or clone this repository
+- Login to Heroku app
 - Create a new Heroku app
+- Only 'Deploy' and 'Settings' are relevant from the menu section. Starting with the 'Settings' first.
 - Set buildbacks to Python and NodeJS in that order
-- Link the Heroku app to the repository
+- Link the Heroku app to the repository on Github
+- Enter the name of the repository we want to connect it with and click 'Connect'
+- The choice appears now to either deploy using automatic deploys or manual deployment, which deploys the current state of the branch.
 - Click on Deploy
+
+[Here is the live version of my project](https://blackjack-keelananderson.herokuapp.com/)
 
 ## Credits
 
@@ -122,8 +129,10 @@ This project was deployed using code institues mock terminal for heroku
 - To all at Code Institute, the videos and information I received helped me create my third portfolio project.
 - https://www.blackjackapprenticeship.com/how-to-play-blackjack/ for the details about the game of Blackjack.
 - https://www.youtube.com/watch?v=8QTsK1aVMI0&t=1447s this youtube tutorial was very helpful in my project especially in helping me to create my classes for the game to make it object-orriented. Some of the code in this tutorial was used in my project.
-- python libaries pyfiglet and pyinputplus which are external libaries installed and both used in my project for the intro and with handling invalid input in place bets function.
 - To Heroku for the live version of the deployed project
 - To Gitpod and Github where I coded the program and held this Repository
 - To StackOverflow which helped be to solve bugs in my code and helped with my understanding of python.
 - To Code institute https://pep8ci.herokuapp.com/# for code validator
+- GeeksForGeeks helped me chose which external library to import
+- python libaries pyfiglet and pyinputplus which are external libaries installed and both used in my project for the intro and with handling invalid input in place bets function.
+- the images for the README file were cropped and edited using paint
