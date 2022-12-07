@@ -6,6 +6,8 @@ Users will play against the computer who will be the dealer in a game of blackja
 
 [Here is the live version of my project](https://blackjack-keelananderson.herokuapp.com/)
 
+![ Blackjack Game ](/readme-images/blackjack-game.png "Text to show on mouseover")
+
 ## How to play Blackjack
 
 The game follows the traditional rules of Blackjack. you csn find out more abouit it on https://www.blackjackapprenticeship.com/how-to-play-blackjack/
@@ -17,31 +19,53 @@ In this game the user will be given a starting pot of $1000 from which they can 
 #### Introduction
 
 When the prgram is run first it will print "Welcome to Blacljack!!!" with the pyfiglet library
-then in normal text it will display the starting pot amount and prompy the user to enter their name. There is no restriction on the names than can be entered here. 
+then in normal text it will display the starting pot amount and prompt the user to enter their name. There is no restriction on the names than can be entered here. 
+
+![ Blackjack intro ](/readme-images/blackjack-intro.png "Text to show on mouseover")
 
 #### Place bet
 
 next the user user will be prompted to place a bet. the pyinputplus library is used here to hanlde invalid input. The minimum bet is $50 and the maximum is whatever amount is in the pot at the time. If anything else is typed in the user will be promped to enter in a number that iss valid. One the bet has been validated by the accept_bet function it will show that the bet was placed , the money lwft in the pot after the bet, and the dealer will begin shuffling the deck and deal 2 cards to both the dealer and the player and the game will begin. the cards dealt will be displayed except for the dealers first card which isnt revealed until the dealer starts playing.
 
+![ place bet ](/readme-images/blackjack-place-bet.png "Text to show on mouseover")
+
 #### Player Hand
 
 The players hand is all the cards in possesion of the player at any time. The first hand will be the first 2 cards dealt and each card will be displayed on screen along with the value of this cards added together. From this the player with understand very easily the value of their hand and can decided whether they want to gamble on improving this hand or keep it.
+
+![ player hand ](/readme-images/blackjack-place-bet.png "Text to show on mouseover")
 
 #### Hit or Stay
 
 The user will be promped with a message saying "Do you want to hit or stay?" they must enter 'h' if they wish to hit and be dealt another card to their hand or 's' if they wish to stay with the hand they have. This message will keep poping up each time the user hits until thet decide to stay with the hand they have, At which point the dealer will begin to play. if at any time the value of the players hand goes above 21 the player will go bust and the dealer automatically wins.
 
+![ Hit or Stay ](/readme-images/blackjack-hit-or-stay.png "Text to show on mouseover")
+
 #### Dealer Hand
 
 After the player has stayed its the dealers turn to play. the dealer has the advantage knowing the players score. the dealers hand will be displayed every time they hit with a 3 seconds pause each time so the user can keep track. If the dealers hand is less than the player hand in value the dealer will hit. they will keep hitting until their value is higher than the players or the same for a draw. The dealer will lose if they go bust trying to beat the player.
 
+![ player hand ](/readme-images/blackjack-place-bet.png "Text to show on mouseover")
+
 #### Result
 
-The outcome of the game be displayed at the end. There are 5 different outcomes in this game and 3 different result. Either the play or the dealer can bust which results in the opposite side winning. Either player can win be obtaining a higher score than their opponent or if their hands values are the same they will draw. if the player wins they win back their bet and the amount of their bet. If they lose the dealer keeps the bets and if its a draw the bet placed is returned to be player. When the game is over the winner is displayed and the ammount thats in the players pot.
+The outcome of the game be displayed at the end. There are 5 different outcomes in this game and 3 different result. Either the player or the dealer can bust which results in the opposite side winning. Either player can win be obtaining a higher score than their opponent or if their hands values are the same they will draw. if the player wins they win back their bet and the amount of their bet. If they lose the dealer keeps the bets and if its a draw the bet placed is returned to be player. When the game is over the winner is displayed and the ammount thats in the players pot.
+
+##### Its a Draw
+![ draw ](/readme-images/blackjack-draw.png "Text to show on mouseover")
+##### Player busts, Dealer wins
+![ player busts ](/readme-images/blackjack-player-busts.png "Text to show on mouseover")
+##### Dealer busts, Player wins
+![ dealer bust ](/readme-images/blackjack-dealer-busts.png "Text to show on mouseover")
+
 
 #### Next Round
 
-The game will then ask the user "Would you like to play another round or cash in your bets?". It then prompts the user to enter 'play' or 'cash'. if the user enters 'play' a new round will begin starting with the bets. if the user enters 'cash' the game will display the ammount the players had in their pot and thank them for playing and the program finishes. For example,  $$$ you won $12345 Thanks for playing! $$$ . If the user decides to play but has less than $50 they will be kicked out of the casino and the message "You Went Broke, Better Luck Next Time!" will be displayed on screen and the program will end. If the user enters anython others than 'play' or 'cash' they will be prompted to try again. They must enter 'play' or 'cash' to continue.
+The game will then ask the user "Would you like to play another round or cash in your bets?". It then prompts the user to enter 'play' or 'cash'. If the user enters 'play' a new round will begin starting with the bets. If the user enters 'cash' the game will display the ammount the user had in their pot and thank them for playing and the program finishes. For example,  $$$ you won $12345 Thanks for playing! $$$ . If the user decides to play but has less than $50 they will be kicked out of the casino and the message "You Went Broke, Better Luck Next Time!" will be displayed on screen and the program will end. If the user enters anything other than 'play' or 'cash' they will be prompted to try again. They must enter 'play' or 'cash' to continue.
+
+![ play ](/readme-images/blackjack-play.png "Text to show on mouseover")
+![ cash ](/readme-images/blackjack-cash.png "Text to show on mouseover")
+![ broke ](/readme-images/blackjack-broke.png "Text to show on mouseover")
 
 ### Future Features
 
