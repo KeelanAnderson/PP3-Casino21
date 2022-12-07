@@ -26,6 +26,7 @@ ranks = ('Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
 
 # Classes
 
+
 class Pot:
     """ creates instance of players pot """
 
@@ -272,7 +273,6 @@ def player_busts():
     """ keep bets, dealer wins, offer next round """
 
     print('Player Busts')
-    show_players_hand()
     dealer_wins(player_pot)
 
 
