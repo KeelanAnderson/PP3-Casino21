@@ -125,7 +125,9 @@ def accept_bet(bet, pot):
     try:
         if bet > pot or bet < 50:
             raise ValueError(
-                f"\nYou tried to bet ${bet}\nYour Pot is ${pot}\nMinimum bets are $50\n"
+                f"\nYou tried to bet ${bet}\n"
+                f"Your Pot is ${pot}\n"
+                "Minimum bets are $50\n"
             )
     except ValueError as error:
         print(error)
