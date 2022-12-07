@@ -73,11 +73,11 @@ I have manually tested this project be doing the following:
 #### unsolved bugs
 
 - no unsolved bugs
-- you went broke printing at the end of the game the amout of times play was typed.
+- you went broke printing at the end of the game the ammount of times play was typed.
 
 #### Validator testing
 ##### PEP8
-- No errors were returned from PEP8online.com
+- No errors were returned from https://pep8ci.herokuapp.com/
 
 ## Deployment
 

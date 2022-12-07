@@ -71,7 +71,7 @@ class Hand:
     def __init__(self):
         self.cards = []
         self.value = 0
-        self.aces = 0  # counts the aces in the hand so they can be adjusted if hand > 21
+        self.aces = 0  # counts the aces in the hand
 
     def add_card(self, card):
         """ add a card to player or dealers hand """
@@ -81,7 +81,8 @@ class Hand:
             self.aces += 1
 
     def adjust_aces(self):
-        """ changes the value of an ace in the hand if the score exceeds 21 """
+        """ changes the value of an ace in
+        the hand if the score exceeds 21 """
         while self.value > 21 and self.aces:
             self.value -= 10
             self.aces -= 1
@@ -165,7 +166,8 @@ def deal_first_hands(player, dealer):
 
 
 def hit(hand, deck):
-    """ deals card if to player or dealer if they hit and calls adjusts any aces of score > 21 """
+    """ deals card if to player or dealer if they
+     hit and calls adjusts any aces of score > 21 """
     hand.add_card(deck.deal_card())
     hand.adjust_aces()
 
@@ -176,7 +178,7 @@ def dealer_plays():
     while dealer_hand.value < player_hand.value and dealer_hand.value < 21:
         hit(dealer_hand, deck)
         show_dealers_hand()
-        time.sleep(3)  
+        time.sleep(3)
 
     if dealer_hand.value > 21:
         dealer_busts()
@@ -195,7 +197,7 @@ def dealer_plays():
         show_dealers_hand()
         round_draw(player_pot)
 
-        
+
 def hit_or_stay(hand, deck):
     """ gives the player the option to hit or stay """
 
@@ -210,7 +212,7 @@ def hit_or_stay(hand, deck):
             if player_hand.value > 21:
                 player_busts()
                 break
-            
+
         elif option.lower() == 's':
             print('Dealer is playing...')
             time.sleep(3)
@@ -219,16 +221,17 @@ def hit_or_stay(hand, deck):
         else:
             print("Enter 'h' to HIT or 's' to Stay: ")
             continue
-        
+
 
 def next_round(pot):
-    """ offers the user the chance to play another round or cash in their bets """
+    """ offers the user the chance to play
+     another round or cash in their bets """
 
     print("\nWould you like to play another round or cash in your bets?")
     play_again = input("Enter 'play' or 'cash': ")
 
     while True:
-        
+
         if play_again.lower() == 'play':
             if player_pot.pot < 50:
                 print("\nYou Went Broke, Better Luck Next Time!")
@@ -244,8 +247,6 @@ def next_round(pot):
                   "or 'cash' to Leave the Casino: ")
             next_round(player_pot)
             break
-            
-        
 
 
 # game outcomes
@@ -311,7 +312,9 @@ def reset():
     player_hand.add_card(deck.deal_card())
     player_hand.add_card(deck.deal_card())
 
+
 # game intro
+
 
 print()
 intro = pyfiglet.figlet_format('Welcome To BlackJack!!!')
