@@ -1,7 +1,20 @@
+"""
+Random
+-This module implements pseudo-random
+ number generators for various distributions.
+Time
+-This module provides various time-related functions.
+pyfiglet
+-pyfiglet takes ASCII text and renders it in ASCII art font.
+pyinputplus
+- PyInputPlus will keep asking the user for text until they enter valid input.
+"""
+
 import random
 import time
 import pyfiglet
 import pyinputplus as pyip
+
 
 values = {'Ace': 11, 'Two': 2, 'Three': 3, 'Four': 4,
           'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8,
@@ -47,7 +60,7 @@ class Card:
 
 
 class Deck:
-    """ creates instances of a deck of playing cards """
+    """ creates instances of a deck of 52 playing cards """
 
     def __init__(self):
         self.deck = []
@@ -66,7 +79,7 @@ class Deck:
 
 
 class Hand:
-    """ shows the hands the the dealer and player have """
+    """ creates instance of the hands the dealer and player has """
 
     def __init__(self):
         self.cards = []

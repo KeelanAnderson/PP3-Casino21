@@ -102,3 +102,4 @@ This project was deployed using code institues mock terminal for heroku
 - To Heroku for the live version of the deployed project
 - To Gitpod and Github where I coded the program and held this Repository
 - To StackOverflow which helped be to solve bugs in my code and helped with my understanding of python.
+- To Code institute https://pep8ci.herokuapp.com/# for code validator
